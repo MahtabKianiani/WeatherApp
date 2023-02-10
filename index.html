@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Week5</title>
+    <title>SheCodes Plus Week 6</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <link
@@ -17,12 +17,6 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-2">Tehran</div>
-        <div class="col-2">Shiraz</div>
-        <div class="col-2">Tabriz</div>
-        <div class="col-2">Isfahan</div>
-      </div>
       <form id="search-city">
         <input
           type="text"
@@ -31,8 +25,13 @@
           autofocus="on"
           id="search-input"
         />
-        <input type="submit" value="Search" />
-        <input type="button" value="Current" id="current" />
+        <input type="submit" value="Search" class="btn btn-dark" />
+        <input
+          type="button"
+          value="Current"
+          id="current"
+          class="btn btn-outline-dark"
+        />
       </form>
 
       <div class="row">
@@ -74,12 +73,15 @@
           ☀️<br />
           Wednesday
         </div>
-        <div class="col-2">
-          🌦 <br />
-          Thursday
-        </div>
+      </div>
+      <div>
+        <a href="https://github.com/MahtabKianiani/WeatherApp" target="_blank"
+          >Open-source code</a
+        >
+        by Mahtab Kianiani
       </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
