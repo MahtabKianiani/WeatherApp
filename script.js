@@ -17,24 +17,31 @@ h1.innerHTML = `${Days[Day]} ${Hour}:${Minute}`;
 let apiKey = "5t90350834ca9900a73331c4o754bfbc";
 
 function showTemprature(response) {
-  console.log(response);
+  console.log(response.data);
   let tempretureElement = document.querySelector("#temprature");
   tempretureElement.innerHTML =
-    +Math.round(response.temperature.current) + "°C";
+    +Math.round(response.data.temperature.current) + "°C";
   let tempDescription = document.querySelector("#temp-description");
-  tempDescription.innerHTML = response.condition.description;
+  tempDescription.innerHTML = response.data.condition.description;
   let feelsLike = document.querySelector("#feels-like");
   feelsLike.innerHTML =
-    " Feels Like: " + Math.round(response.temperature.feels_like) + " °C";
+    " Feels Like: " + Math.round(response.data.temperature.feels_like) + " °C";
   let percipitation = document.querySelector("#percipitation");
   percipitation.innerHTML =
-    "Percipitation: " + response.temperature.pressure + "%";
+    "Percipitation: " + response.data.temperature.pressure + "%";
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = "Humidity: " + response.temperature.humidity + "%";
+  humidity.innerHTML = "Humidity: " + response.data.temperature.humidity + "%";
   let wind = document.querySelector("#wind");
-  wind.innerHTML = "Wind: " + Math.round(response.wind.speed) + " mph";
+  wind.innerHTML = "Wind: " + Math.round(response.data.wind.speed) + " mph";
   let cityName = document.querySelector("h2");
-  cityName.innerHTML = response.city + ", " + response.country;
+  cityName.innerHTML = response.data.city + ", " + response.data.country;
+  let weatherIcon = document.querySelector("#weatherIcon");
+  weatherIcon.setAttribute(
+    "src",
+    `${response.data.condition.icon_url}`,
+    "alt",
+    `${response.data.condition.description}`
+  );
 }
 
 function search(event) {
@@ -61,16 +68,11 @@ form.addEventListener("submit", search);
 
 function showCurrent() {
   function getPosition(position) {
-    let latitude = position.coordinates.latitude;
-    let longitude = position.coordinates.longitude;
-    let apiUrl2 =
-      "https://api.shecodes.io/weather/v1/current?lon=" +
-      longitude +
-      "&lat=" +
-      latitude +
-      "&key=" +
-      apiKey +
-      "&units=metric";
+    console.log(position);
+    let lat = position.coords.latitude;
+    let long = position.coords.longitude;
+    let apiUrl2 = ` https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}&units=metric`;
+
     axios.get(apiUrl2).then(showTemprature);
   }
 

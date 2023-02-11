@@ -16,69 +16,73 @@
   </head>
   <body>
     <div class="container">
-      <form id="search-city">
-        <input
-          type="text"
-          placeholder="Enter city"
-          autocomplete="off"
-          autofocus="on"
-          id="search-input"
-        />
-        <input type="submit" value="Search" class="btn btn-dark" />
-        <input
-          type="button"
-          value="Current"
-          id="current"
-          class="btn btn-outline-dark"
-        />
-      </form>
+      <div class="weather-app">
+        <form id="search-city">
+          <input
+            type="text"
+            placeholder="Enter city"
+            autocomplete="off"
+            autofocus="on"
+            id="search-input"
+          />
+          <input type="submit" value="Search" class="btn btn-dark" />
+          <input
+            type="button"
+            value="Current"
+            id="current"
+            class="btn btn-outline-dark"
+          />
+        </form>
 
-      <div class="row">
-        <div class="col-3">⛅️</div>
-        <div class="col">
-          <br />
-          <h1></h1>
-          <h2></h2>
-          <div id="temp-description"></div>
-          <div id="temprature"></div>
-          <div id="feels-like"></div>
+        <div class="row">
+          <div class="col-3">
+            <img src="" alt="" id="weatherIcon" />
+          </div>
+          <div class="col">
+            <br />
+            <h1></h1>
+            <h2></h2>
+            <div id="temp-description"></div>
+            <div id="temprature"></div>
+            <div id="feels-like"></div>
+          </div>
+          <div class="col" id="additional-data">
+            <br />
+            <br />
+            <div id="percipitation"></div>
+            <div id="humidity"></div>
+            <div id="wind"></div>
+          </div>
         </div>
-        <div class="col">
-          <br />
-          <br />
-          <div id="percipitation"></div>
-          <div id="humidity"></div>
-          <div id="wind"></div>
+        <div class="row">
+          <div class="col-2">
+            🌤 <br />
+            Saturday
+          </div>
+          <div class="col-2">
+            🌨<br />
+            Sunday
+          </div>
+          <div class="col-2">
+            🌥 <br />
+            Monday
+          </div>
+          <div class="col-2">
+            🌤<br />
+            Tuesday
+          </div>
+          <div class="col-2">
+            ☀️<br />
+            Wednesday
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-2">
-          🌤 <br />
-          Saturday
-        </div>
-        <div class="col-2">
-          🌨<br />
-          Sunday
-        </div>
-        <div class="col-2">
-          🌥 <br />
-          Monday
-        </div>
-        <div class="col-2">
-          🌤<br />
-          Tuesday
-        </div>
-        <div class="col-2">
-          ☀️<br />
-          Wednesday
-        </div>
-      </div>
-      <div>
+      <small>
         <a href="https://github.com/MahtabKianiani/WeatherApp" target="_blank"
           >Open-source code</a
         >
         by Mahtab Kianiani
-      </div>
+      </small>
     </div>
 
     <script src="script.js"></script>
