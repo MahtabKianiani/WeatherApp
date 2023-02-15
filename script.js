@@ -18,9 +18,9 @@ let apiKey = "5t90350834ca9900a73331c4o754bfbc";
 
 function showTemprature(response) {
   console.log(response.data);
+  celsiusTemp = response.data.temperature.current;
   let tempretureElement = document.querySelector("#temprature");
-  tempretureElement.innerHTML =
-    +Math.round(response.data.temperature.current) + "°C";
+  tempretureElement.innerHTML = +Math.round(celsiusTemp);
   let tempDescription = document.querySelector("#temp-description");
   tempDescription.innerHTML = response.data.condition.description;
   let feelsLike = document.querySelector("#feels-like");
@@ -80,3 +80,26 @@ function showCurrent() {
 }
 let current = document.querySelector("#current");
 current.addEventListener("click", showCurrent);
+
+function displayFarenhite(event) {
+  event.preventDefault();
+  let centigradeTemp = document.querySelector("#temprature");
+  let farenhiteTemp = celsiusTemp * 1.8 + 32;
+  console.log(farenhiteTemp);
+  centigradeTemp.innerHTML = Math.round(farenhiteTemp);
+  farenhiteLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+}
+function displayCelsius(event) {
+  event.preventDefault();
+  let centigradeTemp = document.querySelector("#temprature");
+  centigradeTemp.innerHTML = Math.round(celsiusTemp);
+  celsiusLink.classList.add("active");
+  farenhiteLink.classList.remove("active");
+}
+let celsiusTemp = null;
+let farenhiteLink = document.querySelector("#farenhite-link");
+farenhiteLink.addEventListener("click", displayFarenhite);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsius);

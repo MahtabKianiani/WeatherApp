@@ -47,8 +47,9 @@ h3 {
   font-size: 14px;
   color: gray;
 }
-span {
-  font-size: 16px;
+
+strong {
+  font-size: 28px;
 }
 a {
   text-decoration: none;
@@ -59,4 +60,10 @@ a {
 }
 #additional-data {
   color: #878787;
+}
+.weather-app .active {
+  color: black;
+}
+.weather-app .active:hover {
+  cursor: default;
 }
