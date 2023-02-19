@@ -15,6 +15,15 @@ let h1 = document.querySelector("h1");
 h1.innerHTML = `${Days[Day]} ${Hour}:${Minute}`;
 
 let apiKey = "5t90350834ca9900a73331c4o754bfbc";
+function displayForecast(response) {
+  console.log(response.data.daily);
+}
+
+function getForecast(coordinates) {
+  let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  console.log(apiForecastUrl);
+  axios.get(apiForecastUrl).then(displayForecast);
+}
 
 function showTemprature(response) {
   console.log(response.data);
@@ -42,6 +51,7 @@ function showTemprature(response) {
     "alt",
     `${response.data.condition.description}`
   );
+  getForecast(response.data.coordinates);
 }
 
 function search(event) {
@@ -103,3 +113,24 @@ farenhiteLink.addEventListener("click", displayFarenhite);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius);
+
+let forecastElement = document.querySelector("#forecast");
+let forecastDays = ["Mon", "Thue", "Wed", "Thur", "Fri"];
+let forecastHTML = `<div class="row">`;
+forecastDays.forEach(function (days) {
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-2">
+            <div class="weather-forecast-day">${days}</div>
+
+            <img
+              src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+              alt=""
+            />
+            <div class="weather-forecast-temperatur">
+              <span class="weather-forecast-max">18°</span
+              ><span class="weather-forecast-min"> 12°</span>
+            </div>`;
+  forecastHTML = forecastHTML + `</div>`;
+});
+forecastElement.innerHTML = forecastHTML;
